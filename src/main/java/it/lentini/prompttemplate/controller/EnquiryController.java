@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.lentini.prompttemplate.dto.TripEnquiry;
 import it.lentini.prompttemplate.dto.TripSuggestionResponse;
 import it.lentini.prompttemplate.service.EnquiryService;
-import org.springframework.web.bind.annotation.GetMapping;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +22,7 @@ public class EnquiryController {
     }
 
     @PostMapping("/help")
-    public TripSuggestionResponse help(@RequestBody TripEnquiry tripEnquiry) {
+    public TripSuggestionResponse help(@RequestBody @Valid TripEnquiry tripEnquiry) {
 
         try {
             String chatbotResponse = enquiryService.processEnquiry(tripEnquiry);
