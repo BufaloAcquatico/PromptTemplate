@@ -2,13 +2,10 @@ package it.lentini.prompttemplate.service;
 
 import it.lentini.prompttemplate.dto.TripEnquiry;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.messages.SystemMessage;
-import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 import static java.lang.IO.println;
@@ -16,9 +13,9 @@ import static java.lang.IO.println;
 @Service
 public class EnquiryService {
 
-    private ChatClient chatClient;
-    private String enquiryTemplate = """
-                        You are an assistant for Tripoffering, a website helping customers finding tour operators to sort out their 
+    private final ChatClient chatClient;
+    private final String enquiryTemplate = """
+                        You are an assistant for Tripoffering, a website helping customers finding tour operators to sort out their
                         trip needs in various destinations around the world. 
             
                         Customer details:
